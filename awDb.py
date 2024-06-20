@@ -1,25 +1,15 @@
 import mysql.connector
 import pandas as pd
-import os
-
-import toml
-
-# Fungsi untuk membaca file konfigurasi TOML
-def read_config(filename='config.toml'):
-    if not os.path.exists(filename):
-        raise FileNotFoundError(f"File {filename} tidak ditemukan.")
-    with open(filename, 'r') as f:
-        config = toml.load(f)
-    return config
+from dbConfig import read_config
 
 def create_connection():
     config = read_config()
     return mysql.connector.connect(
-        host=config['database']['host'],
-        port=config['database']['port'],
-        user=config['database']['user'],
-        password=config['database']['password'],
-        database=config['database']['database_name']
+        host=config['host'],
+        port=config['port'],
+        user=config['user'],
+        password=config['password'],
+        database=config['database']
     )
 
 
