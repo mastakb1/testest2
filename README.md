@@ -15,7 +15,7 @@ Proyek ini bertujuan untuk melakukan visualisasi data dari database Adventure Wo
 
 ## Petunjuk Penggunaan
 1. Pastikan telah menginstal semua dependensi yang diperlukan dengan menjalankan `pip install -r requirements.txt`.
-2. Jalankan aplikasi Streamlit dengan perintah `streamlit run main.py`.
+2. Jalankan aplikasi Streamlit dengan perintah `streamlit run app.py`.
 3. Pilih opsi yang tersedia di sidebar untuk memfilter dan menampilkan visualisasi data.
 
 ## Teknologi yang Digunakan
