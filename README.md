@@ -6,7 +6,7 @@ Proyek ini bertujuan untuk melakukan visualisasi data dari database Adventure Wo
 ## Informasi Proyek
 - **Nama**: Hafiz Ilham Ardana
 - **NPM**: 21082010077
-- **Link Streamlit**: (Tautan Streamlit akan diisi setelah diunggah)
+- **Link Streamlit**: <a href="https://hafizilhamardana077-awdb-viz.streamlit.app/">Klik</a>
 
 ## Deskripsi Folder
 - **awDb.py**: File yang berisi fungsi untuk mengambil data dari database Adventure Works.
