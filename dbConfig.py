@@ -12,11 +12,11 @@ def read_config():
     elif st.secrets:
         # Jika tidak ada file config.toml, gunakan secrets Streamlit jika tersedia
         config = {
-            'host': st.secrets["db_host"],
-            'port': st.secrets["db_port"],
-            'user': st.secrets["db_user"],
-            'password': st.secrets["db_password"],
-            'database': st.secrets["db_database"]
+            'host': st.secrets["host"],
+            'port': st.secrets["port"],
+            'user': st.secrets["user"],
+            'password': st.secrets["password"],
+            'database': st.secrets["database"]
         }
     else:
         # Jika tidak ada file config.toml dan tidak ada secrets Streamlit, gunakan default
