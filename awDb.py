@@ -1,14 +1,14 @@
 import mysql.connector
 import pandas as pd
+import os
 
 def create_connection():
     return mysql.connector.connect(
-        host="kubela.id",
-        port="3306",         
-        user="davis2024irwan",            
-        password="wh451n9m@ch1n3",      
-        database="aw"  
-    
+        host=os.getenv('MYSQL_HOST'),
+        port=os.getenv('MYSQL_PORT'),         
+        user=os.getenv('MYSQL_USER'),            
+        password=os.getenv('MYSQL_PASSWORD'),      
+        database=os.getenv('MYSQL_DATABASE')  
     )
 
 def get_data_from_db(query):
