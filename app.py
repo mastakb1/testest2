@@ -34,25 +34,14 @@ product_fact_df = get_data_from_db("""
 # Konversi kolom tanggal
 sales_fact_df['fulldates'] = pd.to_datetime(sales_fact_df['fulldates'])
 
-# CSS untuk mengatur sidebar ke kanan
-st.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
-        margin-left: auto;
-        margin-right: 0;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
-
-selected_year = expander.selectbox('Select Year', sales_fact_df['years'].unique())
-
 # Judul utama dashboard
 st.title('Sales Dashboard')
+
+# Opsi di bagian atas (kiri)
+expander = st.sidebar.expander('Options')
+# Memilih tahun
+selected_year = expander.selectbox('Select Year', sales_fact_df['years'].unique())
+
 # Filter data berdasarkan tahun yang dipilih
 filtered_sales_fact_df = sales_fact_df[sales_fact_df['years'] == selected_year]
 
