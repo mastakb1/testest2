@@ -34,6 +34,19 @@ product_fact_df = get_data_from_db("""
 # Konversi kolom tanggal
 sales_fact_df['fulldates'] = pd.to_datetime(sales_fact_df['fulldates'])
 
+# CSS untuk mengatur sidebar ke kanan
+st.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        margin-left: auto;
+        margin-right: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Judul utama dashboard
 st.title('Sales Dashboard')
 
