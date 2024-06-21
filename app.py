@@ -34,11 +34,13 @@ product_fact_df = get_data_from_db("""
 # Konversi kolom tanggal
 sales_fact_df['fulldates'] = pd.to_datetime(sales_fact_df['fulldates'])
 
-# Sidebar options
-st.sidebar.header('Options')
+# Judul utama dashboard
+st.title('Sales Dashboard')
 
+# Opsi di bagian atas (kanan)
+expander = st.expander('Options')
 # Memilih tahun
-selected_year = st.sidebar.selectbox('Select Year', sales_fact_df['years'].unique())
+selected_year = expander.selectbox('Select Year', sales_fact_df['years'].unique())
 
 # Filter data berdasarkan tahun yang dipilih
 filtered_sales_fact_df = sales_fact_df[sales_fact_df['years'] == selected_year]
@@ -54,9 +56,6 @@ category_sales_df = sales_product_df.groupby('category').agg({'LineTotal': 'sum'
 
 # Data untuk histogram distribusi penjualan
 sales_time_hist_df = sales_time_df['LineTotal']
-
-# Judul utama dashboard
-st.title('Sales Dashboard')
 
 # Plot Tren Penjualan Harian menjadi Scatter Plot
 st.header('Tren Penjualan Harian (Scatter Plot)')
