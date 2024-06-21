@@ -47,14 +47,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Judul utama dashboard
-st.title('Sales Dashboard')
 
-# Opsi di bagian atas (kanan)
-expander = st.expander('Options')
-# Memilih tahun
+
 selected_year = expander.selectbox('Select Year', sales_fact_df['years'].unique())
 
+# Judul utama dashboard
+st.title('Sales Dashboard')
 # Filter data berdasarkan tahun yang dipilih
 filtered_sales_fact_df = sales_fact_df[sales_fact_df['years'] == selected_year]
 
