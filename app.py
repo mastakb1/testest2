@@ -58,26 +58,10 @@ sales_time_hist_df = sales_time_df['LineTotal']
 # Judul utama dashboard
 st.title('Sales Dashboard')
 
-# Layout dengan kolom
-col1, col2 = st.columns([2, 3])  # Mengatur lebar kolom
-
-# Kolom pertama (sisi kiri)
-with col1:
-    # Plot Tren Penjualan Harian menjadi Scatter Plot dengan warna kategori
-    st.header('Tren Penjualan Harian (Scatter Plot)')
-    daily_sales = sales_time_df.groupby('fulldates').agg({'LineTotal': 'sum'}).reset_index()
-    scatter_fig = px.scatter(daily_sales, x='fulldates', y='LineTotal', color=daily_sales['fulldates'].dt.month_name(), title='Tren Penjualan Harian')
-    st.plotly_chart(scatter_fig)
-    st.write("Scatter plot ini menunjukkan bagaimana penjualan berubah setiap harinya sepanjang tahun yang dipilih. Pola ini dapat membantu mengidentifikasi tren musiman atau hari-hari dengan penjualan tertinggi.")
-    st.write("Kesimpulan: Dari tahun ke tahun, penjualan mengalami naik turun, di awal tahun trend penjualan nya adalah naik, namun cenderung tidak signifikan. namun di tahun 2002 mengalami penjualan menurun, namun setelah itu malah terjadi lonjakan penjualan di tahun 2003 dan tahun selanjutnya memberikan gambaran tren penjualan yang naik")
-
-# Kolom kedua (sisi kanan)
-with col2:
-    # Top 10 Produk Terlaris
-    st.header('Top 10 Produk Terlaris')
-    top_products = sales_product_df.groupby('name').agg({'LineTotal': 'sum'}).nlargest(10, 'LineTotal').reset_index()
-    for index, row in top_products.iterrows():
-        progress_percent = row['LineTotal'] / top_products['LineTotal'].max()
-        st.write(f"{row['name']} - Total Penjualan: {row['LineTotal']}")
-        st.progress(progress_percent)
-    st.write("Bagian ini menampilkan produk-produk dengan total penjualan tertinggi sepanjang tahun yang dipilih. Ini membantu mengidentifikasi produk-produk yang paling populer di kalangan pelanggan.")
+# Plot Tren Penjualan Harian menjadi Scatter Plot
+st.header('Tren Penjualan Harian (Scatter Plot)')
+daily_sales = sales_time_df.groupby('fulldates').agg({'LineTotal': 'sum'}).reset_index()
+scatter_fig = px.scatter(daily_sales, x='fulldates', y='LineTotal', title='Tren Penjualan Harian')
+st.plotly_chart(scatter_fig)
+st.write("Scatter plot ini menunjukkan bagaimana penjualan berubah setiap harinya sepanjang tahun yang dipilih. Pola ini dapat membantu mengidentifikasi tren musiman atau hari-hari dengan penjualan tertinggi.")
+st.write("Kesimpulan: Dari tahun ke tahun, penjualan mengalami naik turun, di awal tahun trend penjualan nya adalah naik, namun cenderung tidak signifikan. namun di tahun 2002 mengalami penjualan menurun, namun setelah itu malah terjadi lonjakan penjualan di tahun 2003 dan tahun selanjutnya memberikan gambaran tren penjualan yang naik")
